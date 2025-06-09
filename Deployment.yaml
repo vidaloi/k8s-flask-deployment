@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-app
+spec:
+  replicas: 1 # how many pods to run
+  selector:
+    matchLabels:
+      app: flask
+  template:
+    metadata:
+      labels:
+        app: flask
+    spec:
+      containers:
+      - name: flask
+        image: flask-app:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5000
+
+#deployer mon app dans un pod
+# utiliser image Docker flask-app 
+# exposer sur le port 500 dans le container
